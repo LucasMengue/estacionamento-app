@@ -11,28 +11,12 @@ app.get("/api/ping", (request, response) => {
 });
 
 /* endpoints vehicles */
-app.get("/api/vehicles", (request, response) => {
-  // query string, vem dos parâmetros da URL
-  const { id } = request.query;
-  const vehicles = [
-    {
-      id: 1,
-      name: "Onix 1.4",
-      owner: "Marcus Vinicius",
-      type: "car",
-    },
-    {
-      id: 2,
-      name: "Cobalt Cinza",
-      owner: "Maria Eduarda",
-      type: "car",
-    },
-  ];
-
-  if (id) {
-    response.send(vehicles.filter((vehicle) => vehicle.id == id));
-    return;
-  }
+app.get("/api/vehicles", async (request, response) => {
+  const db = await openDatabase();
+  const vehicles = await db.all(`
+    SELECT * FROM vehicles
+  `);
+  db.close();
 
   response.send(vehicles);
 });
