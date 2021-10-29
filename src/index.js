@@ -1,4 +1,5 @@
 import express, { request, response } from "express";
+import { openDatabase } from "./database.js";
 const app = express();
 
 app.use(express.json());
