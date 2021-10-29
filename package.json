@@ -1,0 +1,15 @@
+{
+  "name": "estacionamento-app",
+  "version": "1.0.0",
+  "description": "Aplicação de um estacionamento, criada com as tecnologias Node.js e React.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "n"
+  },
+  "author": "",
+  "license": "ISC"
+}
