@@ -21,7 +21,26 @@ app.get("/api/vehicles", async (request, response) => {
   response.send(vehicles);
 });
 
-app.post("/api/vehicles", (request, response) => {});
+app.post("/api/vehicles", async (request, response) => {
+  const { model, label, type, owner, observation } = request.body;
+  const db = await openDatabase();
+  const data = await db.run(
+    `
+    INSERT INTO vehicles (model, label, type, owner, observation)
+    VALUES (?, ?, ?, ?, ?)
+  `,
+    [model, label, type, owner, observation]
+  );
+  db.close();
+  response.send({
+    id: data.lastID,
+    model,
+    label,
+    type,
+    owner,
+    observation,
+  });
+});
 
 app.put("/api/vehicles/:id", (request, response) => {});
 
