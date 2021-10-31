@@ -1,5 +1,17 @@
 import express, { request, response } from "express";
-import { openDatabase } from "./database.js";
+import {
+  activityCheckin,
+  activityCheckout,
+  listActivities,
+  removeActivity,
+} from "./controllers/activitiesController.js";
+import {
+  insertVehicles,
+  listVehicles,
+  removeVehicle,
+  updateVehicles,
+} from "./controllers/vehiclesController.js";
+
 const app = express();
 
 app.use(express.json());
