@@ -47,3 +47,7 @@ app.get("/api/activities", listActivities);
 app.post("/api/activities/checkin", activityCheckin);
 app.put("/api/activities/checkout", activityCheckout);
 app.delete("/api/activities/:id", removeActivity);
+
+app.listen(8000, () => {
+  console.log("Servidor rodando na porta 8000...");
+});
